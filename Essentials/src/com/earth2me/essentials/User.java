@@ -152,7 +152,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, net.es
 		sendMessage(tl("addedToAccount", NumberUtil.displayCurrency(value, ess)));
 		if (initiator != null)
 		{
-			initiator.sendMessage(tl("addedToOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+			initiator.sendMessage(tl("addedToOthersAccount", NumberUtil.displayCurrency(value, ess), this.getName(), NumberUtil.displayCurrency(getMoney(), ess)));
 		}
 	}
 
@@ -167,8 +167,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, net.es
 		{
 			setMoney(getMoney().subtract(value));
 			reciever.setMoney(reciever.getMoney().add(value));
-			sendMessage(tl("moneySentTo", NumberUtil.displayCurrency(value, ess), reciever.getDisplayName()));
-			reciever.sendMessage(tl("moneyRecievedFrom", NumberUtil.displayCurrency(value, ess), getDisplayName()));
+			sendMessage(tl("moneySentTo", NumberUtil.displayCurrency(value, ess), reciever.getName()));
+			reciever.sendMessage(tl("moneyRecievedFrom", NumberUtil.displayCurrency(value, ess), getName()));
 		}
 		else
 		{
@@ -200,7 +200,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, net.es
 		sendMessage(tl("takenFromAccount", NumberUtil.displayCurrency(value, ess)));
 		if (initiator != null)
 		{
-			initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+			initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, ess), this.getName(), NumberUtil.displayCurrency(getMoney(), ess)));
 		}
 	}
 
@@ -602,7 +602,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, net.es
 			if (broadcast && !isHidden())
 			{
 				setDisplayNick();
-				final String msg = tl("userIsNotAway", getDisplayName());
+				final String msg = tl("userIsNotAway", getName());
 				if (!msg.isEmpty())
 				{
 					ess.broadcastMessage(this, msg);
@@ -638,7 +638,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, net.es
 			if (!isHidden())
 			{
 				setDisplayNick();
-				final String msg = tl("userIsAway", getDisplayName());
+				final String msg = tl("userIsAway", getName());
 				if (!msg.isEmpty())
 				{
 					ess.broadcastMessage(this, msg);
